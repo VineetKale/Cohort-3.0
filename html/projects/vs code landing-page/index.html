@@ -8,24 +8,26 @@
         body{
             background-color: black;
             font-family: Arial, sans-serif;
+            color:white;
         }
         .container{
             width:1200px;
             margin: 0 auto;
             display:grid;
             grid-template-columns:1fr 2fr;
-            align-items:center;
+            align-items:start;
             gap:10px;
-
+            row-gap: 13px;
+            column-gap: 85px;
+            color:grey;
         }
-        .container2{
+        .languagePanel{
             display:grid;
             grid-template-columns:1fr 1fr 1fr;
-            grid-template-rows:1fr 1fr 1fr 1fr;
-            background-color: yellow;
+            padding-inline:2.5rem;
         }
         .left{
-            background-color: red;
+            
             
         }
         
@@ -35,13 +37,28 @@
         .vertical-center{
             display:flex;
             justify-content:center;
-            height:100%;
             flex-direction:column;
+            align-items:center;
 
         }
         .horizontal-center{
             margin:0 auto;
 
+        }
+        .languagePanel div{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap: 12px;
+            color: #c9d1d9;
+            font-size: 16px;
+        }
+        .languagePanel img{
+            height:40px;
+            width:auto;
+        }
+        .flex{
+            display:flex;
         }
     </style>
 </head>
@@ -52,19 +69,55 @@
             <h3>Code in any Language</h3>
             <p>VS Code supports almost every major programming language. Several ship in the box, like JavaScript, TypeScript, CSS, and HTML, but extensions for others can be found in the VS Code Marketplace.</p>
         </div>
-        <div class="container2">
-            <div>JavaScript</div>
-            <div>TypeScript</div>
-            <div>Python</div>
-            <div>C#</div>
-            <div>C++</div>
-            <div>HTML</div>
-            <div>Java</div>
-            <div>JSON</div>
-            <div>PHP</div>
-            <div>Markdown</div>
-            <div>PowerShell</div>
-            <div>YAML</div>
+        <div class="languagePanel">
+            <div class="flex">
+                <img src="Images/js.png" width="32px">
+                <code class="vertical-center">JavaScript</code> 
+            </div>
+            <div class="flex">
+                <img src="Images/ts.png" width="32px">
+                <code class="vertical-center">TypeScript</code>
+            </div>
+            <div class="flex">
+                <img src="Images/pyt.png" width="32px">
+                <code class="vertical-center">Python</code>
+            </div>
+            <div class="flex">
+                <img src="Images/c#.png" width="32px">
+                <code class="vertical-center">C#</code>
+            </div>
+            <div class="flex">
+                <img src="Images/c++.png" width="32px">
+                <code class="vertical center">C++</code>
+            </div>
+            <div class="flex">
+                <img src="Images/html.png" width="32px">
+                <code class="vertical-center">HTML</code>
+            </div>
+            <div class="flex">
+                <img src="Images/java.png" width="32px">
+                <code class="vertical-center">Java</code>
+            </div>
+            <div class="flex">
+                <img src="Images/json.png" width="32px">
+                <code class="vertical-center">JSON</code>
+            </div>
+            <div class="flex">
+                <img src="Images/php.png" width="32px">
+                <code class="vertical-center">PHP</code>
+            </div>
+            <div class="flex">
+                <img src="Images/mark.png" width="32px">
+                <code class="vertical-center">Markdown</code>
+            </div>
+            <div class="flex">
+                <img src="Images/power.png" width="32px">
+                <code class="vertical-center">PowerShell</code>
+            </div>
+            <div class="flex">
+                <img src="Images/yaml.png" width="32px">
+                <code class="vertical-center">YAML</code>
+            </div>
         </div>
     </div>
 </body>
