@@ -8,10 +8,27 @@
         body{
             background-color: black;
             font-family: Arial, sans-serif;
-            color:white;
+            color:grey;
         }
+        .nav{
+            display:flex;
+            justify-content:space-between;
+            padding-left:150px;
+            padding-right:150px;
+        }
+        .nav_left{
+            display:flex;
+            justify-content:space-between;
+            gap: 10px;
+            align-items:center;
+            cursor:pointer;
+        }
+
+        /* .nav:hover{
+            color:white;
+        } */
         .container{
-            width:1200px;
+            
             margin: 0 auto;
             display:grid;
             grid-template-columns:1fr 2fr;
@@ -20,17 +37,15 @@
             row-gap: 13px;
             column-gap: 85px;
             color:grey;
+            padding-left: 150px;
+            padding-right: 150px;
         }
         .languagePanel{
             display:grid;
             grid-template-columns:1fr 1fr 1fr;
             padding-inline:2.5rem;
         }
-        .left{
-            
-            
-        }
-        
+
         .content{
             height:500px;
         }
@@ -64,6 +79,59 @@
 </head>
 
 <body>
+    <div class="nav" >
+        <div class="nav_left">
+            <div>Visual Studio Code</div>
+            <div>Docs</div>
+            <div>Updates</div>
+            <div>Blog</div>
+            <div>API</div>
+            <div>Extensions</div>
+            <div>FAQ</div>
+            <div>Learn</div>
+        </div>
+            
+        <div style="padding-top: 12px;">
+            <input type="text" placeholder="Search Docs" >
+            <button style="padding:4px; background-color: rgb(64, 64, 145); color:white">Download</button>
+        </div>
+
+    </div>
+    <br>
+    <center>
+        <p style="font-size:13px;">Version 1.92 is now available! Read about the new features and fixes from July.</p>
+    </center>
+    <br>
+    <br>
+    <div class="nav">
+        <div>
+            <p>Free. Built on open source. Runs everywhere.</p>
+            <h1>Code Editing.</h1>
+            <h1>Redefined.</h1>
+            <button style="padding:4px; background-color: rgb(64, 64, 145); color:white">Download for MacOS</button>
+            <p>Web, Insider edition, or other platforms</p>
+            <p style="font-size:11px;">By using VS code, you agree to its license and privacy statements.</p>
+        </div>
+
+        <div>
+            <img src="Images/landing.png" width="600px">
+        </div>
+    </div>
+
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+
+
     <div class="container">
         <div class="left">
             <h3>Code in any Language</h3>
@@ -83,7 +151,7 @@
                 <code class="vertical-center">Python</code>
             </div>
             <div class="flex">
-                <img src="Images/c#.png" width="32px">
+                <img src="Images/chash.png" width="32px">
                 <code class="vertical-center">C#</code>
             </div>
             <div class="flex">
