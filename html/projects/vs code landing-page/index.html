@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            font-family: Arial, sans-serif;
+        }
+        .container{
+            width:1200px;
+            margin: 0 auto;
+            display:grid;
+            grid-template-columns:1fr 2fr;
+            align-items:center;
+            gap:10px;
+
+        }
+        .container2{
+            display:grid;
+            grid-template-columns:1fr 1fr 1fr;
+            grid-template-rows:1fr 1fr 1fr 1fr;
+            background-color: yellow;
+        }
+        .left{
+            background-color: red;
+            
+        }
+        
+        .content{
+            height:500px;
+        }
+        .vertical-center{
+            display:flex;
+            justify-content:center;
+            height:100%;
+            flex-direction:column;
+
+        }
+        .horizontal-center{
+            margin:0 auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h3>Code in any Language</h3>
+            <p>VS Code supports almost every major programming language. Several ship in the box, like JavaScript, TypeScript, CSS, and HTML, but extensions for others can be found in the VS Code Marketplace.</p>
+        </div>
+        <div class="container2">
+            <div>JavaScript</div>
+            <div>TypeScript</div>
+            <div>Python</div>
+            <div>C#</div>
+            <div>C++</div>
+            <div>HTML</div>
+            <div>Java</div>
+            <div>JSON</div>
+            <div>PHP</div>
+            <div>Markdown</div>
+            <div>PowerShell</div>
+            <div>YAML</div>
+        </div>
+    </div>
+</body>
+</html>
