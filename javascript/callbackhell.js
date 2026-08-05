@@ -1,9 +1,15 @@
-setTimeout(function(){
+function setTimeoutPromisified(duration){
+    return new Promise(function(resolve){
+        setTimeout(resolve,duration);
+    });
+}
+
+setTimeoutPromisified(1000).then(function(){
     console.log("hi");
-    setTimeout(function(){
-        console.log("hello");
-    },3000);
-    setTimeout(function(){
-        console.log("hey there");
-    },5000);
-}, 1000);
+    return setTimeoutPromisified(3000);
+}).then(function(){
+    console.log("hello");
+    return setTimeoutPromisified(5000);
+}).then(function(){
+    console.log("hi there");
+})
