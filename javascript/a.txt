@@ -1,0 +1,3 @@
+hey there 
+this text is saved in 'a.txt'
+keep coding
