@@ -1,3 +1,2 @@
-hey there 
-this text is saved in 'a.txt'
-keep coding
+hi this is vineet
+this data is stored in a.txt
