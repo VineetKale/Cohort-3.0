@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button onclick="addToDo()">Add To Do</button>
+    <button onclick="deleteFirstToDo()">Delete First To Do</button>
+    <button onclick="deleteLastToDo()">Delete Last To Do</button>
+    <div id="todos"></div>
+</body>
+<script>
+    // ask server for current list, then draw it
+    function fetchAndRender() {
+        fetch('/todos')
+            .then(function(res) { return res.json(); })
+            .then(function(data) { render(data); });
+    }
+
+    function addToDo(){
+        let title = document.querySelector("input").value;
+        fetch('/todos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: title })
+        }).then(function() {
+            document.querySelector("input").value = "";
+            fetchAndRender();
+        });
+    }
+
+    function deleteFirstToDo(){
+        fetch('/todos/first', { method: 'DELETE' })
+            .then(function() { fetchAndRender(); });
+    }
+
+    function deleteLastToDo(){
+        fetch('/todos/last', { method: 'DELETE' })
+            .then(function() { fetchAndRender(); });
+    }
+
+    function createToDoComponent(todo, index){
+        const div = document.createElement("div");
+        const h1 = document.createElement("h1");
+        const button = document.createElement("button");
+        h1.innerHTML = todo.title;
+        button.innerHTML = "Delete";
+        div.append(h1);
+        div.append(button);
+        button.onclick = function() {
+            fetch('/todos/' + index, { method: 'DELETE' })
+                .then(function() { fetchAndRender(); });
+        };
+        return div;
+    }
+
+    function render(ToDo){
+        document.querySelector("#todos").innerHTML = "";
+        for(let i = 0; i < ToDo.length; i++){
+            const element = createToDoComponent(ToDo[i], i);
+            document.querySelector("#todos").appendChild(element);
+        }
+    }
+
+    fetchAndRender(); // load todos when page first opens
+</script>
+</html>
