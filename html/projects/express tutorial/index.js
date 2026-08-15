@@ -41,6 +41,13 @@ app.put("/",function(req,res){
     res.json({});
 })
 
-
+app.delete("/",function(req,res){
+    for(let i=0;i<=users[0].kidneys.length;i++){
+        if(users[0].kidneys[i].healthy==false){
+            users[0].kidneys.splice(i,1);
+        }
+    }
+        res.json({});
+})
 
 app.listen(3000);
