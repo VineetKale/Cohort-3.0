@@ -35,19 +35,43 @@ app.post("/",function(req,res){
     })
 })
 app.put("/",function(req,res){
-    for(let i=0;i<=users[0].kidneys.length;i++){
-        users[0].kidneys[i].healthy=true;
+    if(atleastOneBadkidney()){
+        for(let i=0;i<=users[0].kidneys.length;i++){
+            users[0].kidneys[i].healthy=true;
+        }
+        res.json({});
     }
-    res.json({});
+    else{
+        res.status(411).json({
+            msg:"all kidneys are healthy already."
+        })
+    }
+
 })
 
 app.delete("/",function(req,res){
-    for(let i=0;i<=users[0].kidneys.length;i++){
-        if(users[0].kidneys[i].healthy==false){
-            users[0].kidneys.splice(i,1);
+    if(atleastOneBadkidney()){
+        for(let i=0;i<=users[0].kidneys.length;i++){
+            if(users[0].kidneys[i].healthy==false){
+                users[0].kidneys.splice(i,1);
+            }
         }
+            res.json({});
     }
-        res.json({});
-})
+    else{
+        res.status(411).json({
+            msg:"atleast one unhealthy kidney is required to delete."
+        })
+    }
 
+})
+function atleastOneBadkidney(){
+    for(let i=0;i<users[0].kidneys.length;i++){
+        const check=users[0].kidneys[i].healthy;
+        if(check==false){
+            return true;
+        }
+
+    }
+}
 app.listen(3000);
