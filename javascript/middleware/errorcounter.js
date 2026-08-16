@@ -17,6 +17,6 @@ app.get("/errorcount",function(req,res){
 
 app.use(function(err,req,res,next){
     res.status(404).send({});
-    errorcount=errorcount+1;
+    errorcount++;
 });
 app.listen(3000);
