@@ -11,7 +11,7 @@ app.use(function(req,res,next){
     if(numofrequestsforuser[userId]){
         numofrequestsforuser[userId]=numofrequestsforuser[userId]+1;
         if(numofrequestsforuser[userId]>=5){
-            res.status(404).send("no entry");
+            res.status(404).send("no entry!");
         }
         else{
             next();
