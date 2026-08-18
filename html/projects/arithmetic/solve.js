@@ -3,37 +3,34 @@ const app=express();
 
 let requestcount=0;
 
-function RequestIncreaser(){
-    requestcount++;
-    console.log("Request number: "+requestcount);
+function RequestIncreaser(req,res,next){
+    requestcount=requestcount+1;
+    console.log("Number of requests:"+requestcount);
+    next();
 }
 
-app.get("/multiply/:a/:b",function(req,res){
-    RequestIncreaser();
+app.get("/multiply/:a/:b",RequestIncreaser ,function(req,res){
     const a=req.params.a;
     const b=req.params.b;
     res.json({
         answer:a*b
     })
 })
-app.get("/add/:a/:b",function(req,res){
-    RequestIncreaser();
+app.get("/add/:a/:b",RequestIncreaser ,function(req,res){
     const a=parseInt(req.params.a);
     const b=parseInt(req.params.b);
     res.json({
         answer:a+b
     })
 })
-app.get("/subtract/:a/:b",function(req,res,next){
-    RequestIncreaser();
+app.get("/subtract/:a/:b",RequestIncreaser ,function(req,res,next){
     const a=parseInt(req.params.a);
     const b=parseInt(req.params.b);
     res.json({
         answer:a-b
     })
 })
-app.get("/divide/:a/:b",function(req,res){
-    RequestIncreaser();
+app.get("/divide/:a/:b",RequestIncreaser ,function(req,res){
     const a=parseInt(req.params.a);
     const b=parseInt(req.params.b);
     res.json({
