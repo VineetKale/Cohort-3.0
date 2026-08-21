@@ -51,4 +51,25 @@ app.post("/signin",function(req,res){
     }
     console.log(users);
 })
+app.get("/me",function(req,res){
+    const token=req.headers.token;
+    let founduser=null;
+    for(let i=0;i<users.length;i++){
+        if(users[i].token==token){
+            founduser=users[i];
+        }
+        else founduser=false;
+    }
+    if(founduser){
+        res.json({
+            username:founduser.username,
+            password:founduser.password
+        })
+    }
+    else{
+        res.json({
+            msg:"Token not found"
+        })
+    }
+})
 app.listen(3000);
