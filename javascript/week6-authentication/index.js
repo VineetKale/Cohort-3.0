@@ -1,17 +1,11 @@
 const express=require("express");
 const app=express();
-
+const jwt=require("jsonwebtoken");
+const JWT_SECRET="vineetkale";
 app.use(express.json())
 const users=[];
 
-function generateToken(){
-    let options="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let token="";
-    for(let i=0;i<32;i++){
-        token+=options[Math.floor(Math.random()*options.length)];
-    }
-    return token;
-}
+
 
 app.post("/signup",function(req,res){
     const username=req.body.username;
@@ -37,12 +31,12 @@ app.post("/signin",function(req,res){
         else return false;
     })
     if(founduser){
-        const token=generateToken();
-        founduser.token=token;
-        res.send({
-            token
+        const token=jwt.sign({
+            username:username
+        },JWT_SECRET);
+        res.json({
+            token:token
         })
-        console.log(founduser);
     }
     else{
         res.status(403).send({
@@ -53,12 +47,15 @@ app.post("/signin",function(req,res){
 })
 app.get("/me",function(req,res){
     const token=req.headers.token;
+    const decodedInformation=jwt.verify(token,JWT_SECRET);
+    const username=decodedInformation.username;
     let founduser=null;
+
+
     for(let i=0;i<users.length;i++){
-        if(users[i].token==token){
+        if(users[i].username==username){
             founduser=users[i];
         }
-        else founduser=false;
     }
     if(founduser){
         res.json({
